@@ -1,18 +1,16 @@
 <script setup>
+import AccessGate from './components/AccessGate.vue';
 
 </script>
 
 <template>
-  <div class="app-wrapper">
-    <input type="number">
-
+  <div id="app-wrapper">
+    <AccessGate/>
   </div>
 </template>
 
 <style scoped>
-.app-wrapper {
-  width: 200px;
-  height: 50px;
+#app-wrapper {
+  background-color: gray;
 }
-
 </style>
