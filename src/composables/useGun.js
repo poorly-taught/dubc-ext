@@ -11,7 +11,7 @@ export function useGun() {
 
   const loginUser = async ({username, password}) => new Promise((resolve, reject) => {
     user.auth(username, password, (ack) => {
-      if (ack.ok) resolve(ack)
+      if (!ack.err) resolve(ack)
       if (ack.err) reject(err)
     }) 
   })

@@ -18,24 +18,37 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, defineEmits } from 'vue'
 import { useGun } from '@/composables/useGun'
 
+const emit = defineEmits(['userAuthenticated'])
+
 const isSignUp = ref(true)
+
 const toggleForm = () => {
   isSignUp.value = !isSignUp.value
 }
-
-const gun = useGun()
 
 const formData = reactive({
   username: null,
   password: null
 })
+
+const resetFormData = () => {
+  formData.username = null
+  formData.password = null
+}
+
+const gun = useGun()
+
 const submitForm = async () => {
+
+
   if (isSignUp.value) {
     try {
       await gun.createUser(formData)
+      resetFormData()
+      toggleForm()
     } catch (err) {
       console.error(err)
     }
@@ -43,7 +56,9 @@ const submitForm = async () => {
 
   if (!isSignUp.value) {
     try {
-      await gun.loginUser(formData)
+      const result = await gun.loginUser(formData)
+      resetFormData()
+      emit('userAuthenticated', result)
     } catch (err) {
       console.error(err)
     }
