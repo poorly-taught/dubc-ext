@@ -6,14 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fmt": "prettier --write '**/*.{vue,js,json,css,scss,md}'"
   },
   "dependencies": {
-    "gun": "^0.2020.1239",
-    "vue": "^3.3.11"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.10"
+    "@crxjs/vite-plugin": "^2.0.0-beta.19",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.11"
   }
 }

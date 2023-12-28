@@ -1,4 +1,5 @@
 {
+  "typeAcquisition": {"include": ["chrome"]},
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
