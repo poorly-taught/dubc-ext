@@ -10,6 +10,7 @@ const minus = () => {
 const add = () => count.value++
 
 onMounted(() => {
+  console.log('onMounted')
   chrome.storage.sync.get(['count'], (result) => {
     count.value = result.count || 0
   })
