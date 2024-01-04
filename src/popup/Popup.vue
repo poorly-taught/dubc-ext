@@ -1,41 +1,9 @@
 <script setup lang="js">
+import * as regex from '../utils/contentRegex.js'
+
 import { onMounted } from 'vue'
-import _metascraper from "metascraper";
-import title from "metascraper-title";
-// import image from "metascraper-image";
-// import author from "metascraper-author";
 
-
-const youtubeVideoRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(c\/.+\/|channel\/.+|user\/.+\?.*v=|embed\/|v\/|.+\?v=)|youtu\.be\/)([^&=%\?]{11})/;
-
-const metascraper = _metascraper([title()]);
-
-onMounted(async () => {
-  try {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-    if (tab.url.match(youtubeVideoRegex)) {
-      const html = await getHTMLFromTab(tab.id)
-      console.log(html[0].result)
-      
-    }
-
-  } catch (error) {
-    // feedback/report flow
-    console.error(error)
-  }
-})
-
-const getHTMLFromTab = async (tabId) => {
-  return await chrome.scripting.executeScript({
-    target: { tabId },
-    func: async () => {
-      return document.documentElement.outerHTML
-    },
-  });
-}
-
-
+// const metascraper = _metascraper([youtube()])
 
 // onMounted(() => {
 //   chrome.storage.sync.get(['count'], (result) => {
