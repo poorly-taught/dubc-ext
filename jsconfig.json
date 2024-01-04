@@ -1,9 +1,9 @@
 {
   "typeAcquisition": {"include": ["chrome"]},
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
+  // "compilerOptions": {
+  //   "paths": {
+  //     "@/*": ["./src/*"]
+  //   }
+  // },
   "exclude": ["node_modules", "dist"]
 }

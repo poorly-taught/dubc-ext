@@ -1,29 +1,30 @@
 <script setup lang="js">
-import * as regex from '../utils/contentRegex.js'
+import { ref } from 'vue';
+import StarRating from './components/StarRating.vue'
 
-import { onMounted } from 'vue'
+const rating = ref(0)
 
-// const metascraper = _metascraper([youtube()])
+const starRatingHandler = (value) => {
+  rating.value = value
+}
 
-// onMounted(() => {
-//   chrome.storage.sync.get(['count'], (result) => {
-//     count.value = result.count || 0
-//   })
-// })
+const submitHandler = () => {
+  rating.value = 0
+}
 
-// watch(count, (newCount) => {
-//   chrome.storage.sync.set({ count: newCount })
-
-//   chrome.runtime.sendMessage({ type: 'COUNT', count: count.value })
-// })
 
 </script>
 
 <template>
   <main>
-
-    <div class="calc">
-
+    <div>
+      {{ rating }}
+    </div>
+    <div>
+      <StarRating :value="0" :maxStars="5" @ratingSet="starRatingHandler"/>
+    </div>
+    <div>
+      <button @click="submitHandler">submit</button>
     </div>
 
   </main>
@@ -48,16 +49,6 @@ import { onMounted } from 'vue'
   background-color: #242424;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #fafafa;
-  }
-
-  a:hover {
-    color: #42b983;
-  }
-}
-
 body {
   min-width: 20rem;
   color-scheme: light dark;
@@ -69,45 +60,13 @@ main {
   margin: 0 auto;
 }
 
-h3 {
+/* h3 {
   color: #42b983;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 200;
   line-height: 1.2rem;
   margin: 2rem auto;
-}
+} */
 
-.calc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-
-  >button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #42b983;
-    border-radius: 0.25rem;
-    background-color: transparent;
-    color: #42b983;
-    cursor: pointer;
-    outline: none;
-
-    width: 3rem;
-    margin: 0 a;
-  }
-
-  >label {
-    font-size: 1.5rem;
-    margin: 0 1rem;
-  }
-}
-
-a {
-  font-size: 0.5rem;
-  margin: 0.5rem;
-  color: #cccccc;
-  text-decoration: none;
-}
 </style>

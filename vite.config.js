@@ -21,5 +21,13 @@ export default defineConfig(({ mode }) => {
       vue(),
     ],
     protocolImports: true,
+    server: {
+      host: 'localhost',
+      port: 5173,
+      strictPort: true,
+      hrm: {
+        clientPort: 5173
+      }
+    },
   };
 });
