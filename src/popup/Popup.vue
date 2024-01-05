@@ -50,13 +50,12 @@ const submitHandler = () => {
 }
 
 body {
-  min-width: 20rem;
   color-scheme: light dark;
 }
 
 main {
   text-align: center;
-  padding: 1em;
+  padding: 0.5em;
   margin: 0 auto;
 }
 
